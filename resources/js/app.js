@@ -13,7 +13,6 @@ Vue.component('apartment-component', require('./view/AdminPages/AdminPage.vue').
 
 import { required, alpha, max, min, between } from 'vee-validate/dist/rules';
 import { extend, localize, ValidationProvider, ValidationObserver } from 'vee-validate';
-import { i18n } from './i18n.js';
 import en from "vee-validate/dist/locale/en.json";
 import ka from "vee-validate/dist/locale/ka.json";
 import ru from "vee-validate/dist/locale/ru.json";
@@ -57,7 +56,6 @@ const app = new Vue({
     getHTMLTag.setAttribute("lang", i18n.locale);
   },
 
-  i18n,
   router,
   // router: new VueRouter(routes)
 });

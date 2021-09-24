@@ -232,13 +232,6 @@
                       {{ $t("add_submit") }}
                     </button>
                   </div>
-
-                  <!-- <input
-                    type="text"
-                    v-model="lang"
-                    name="lang"
-                    style="display: none"
-                  /> -->
                 </form>
               </ValidationObserver>
             </div>
@@ -304,8 +297,6 @@
 </template>
 
 <script>
-// import i18n from "../../i18n.js";
-// import { localize } from "vee-validate";
 
 export default {
   name: "adminpage",
@@ -318,9 +309,7 @@ export default {
 
   data() {
     return {
-      //buildings data
       id: "",
-
       username: "",
       lastname: "",
       gender: "",
@@ -344,23 +333,7 @@ export default {
         .getAttribute("content"),
     };
   },
-  mounted() {
-    console.log(this.buildings);
-    if (localStorage.getItem("lang") !== null) {
-      this.lang = localStorage.getItem("lang");
-      localStorage.setItem("pre_lang", this.lang);
-      localStorage.removeItem("lang");
-    } else {
-      this.lang = "ka";
-      if (localStorage.getItem("pre_lang") === "en") {
-        this.lang = "en";
-      } else if (localStorage.getItem("pre_lang") === "ru") {
-        this.lang = "ru";
-      }
-    }
-  },
   methods: {
-
     add_apartment() {
       if (this.update == false) {
         console.log("insert");
@@ -368,7 +341,6 @@ export default {
       } else {
         console.log("update");
         document.apartment.action = "/updateapartment";
-        this.update_data();
       }
     },
 
@@ -405,29 +377,6 @@ export default {
           this.person_number = element.person_number;
 
           this.update = true;
-        }
-      });
-    },
-
-    update_data() {
-      this.posts.forEach((element) => {
-        if (element.id == this.id) {
-          console.log(id);
-          // const database_img_path = element.building_image
-          //   .split("$")
-          //   .slice(0, -1);
-          // const input_img_path = this.building_image.split("$").slice(0, -1);
-
-          // database_img_path.forEach((db_img) => {
-          //   input_img_path.forEach((input_img) => {
-          //     if (db_img == input_img) {
-          //       delete_status = false;
-          //     }
-          //   });
-          //   if (delete_status) {
-          //     delete_img += db_img + "$";
-          //   }
-          // });
         }
       });
     },
